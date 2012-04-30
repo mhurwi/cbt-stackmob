@@ -2,19 +2,19 @@
 $(document).ready(function(){
 	console.log('custom application.js loaded successfully!')
 
-
-	  //Creating a user, but this time with a callback.
-  var user = new StackMob.User({ username: 'Bill Watterson', password: 'weirdosfromanotherplanet', profession: 'cartoonist'  });
+$('#name-button').click(function(e){
+  e.preventDefault();
+  var name = $('input#name').val();
+  var user = new StackMob.User({ username: name, password:'test'});
   user.create({
-    //After StackMob successfully saves "Bill Watterson", print out the result
-    success: function(model) {
-      //Print out "Bill Watterson: cartoonist"
-      console.debug(model.get('username') + ': ' + model.get('profession'));
+    success: function(model){
+      console.log('Created successfully!');
     },
-    error: function(model, response) {
-      console.debug("curses! we have failed, Hobbes!");
+    error: function(model, response){
+      console.log('error creating the user');
     }
   });
+});
 
-  
+
 });
