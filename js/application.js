@@ -12,7 +12,8 @@ $('#name-button').click(function(e){
     },
     error: function(model, response){
       console.log('error creating the user');
-    }
+    },
+    $('input#name').val('');
   });
 });
 
